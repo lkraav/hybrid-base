@@ -13,8 +13,8 @@ add_action( 'after_setup_theme', 'hybrid_base_custom_header_setup', 15 );
 function hybrid_base_custom_header_setup() {
 
 	/* Adds support for WordPress' "custom-header" feature. */
-	add_theme_support( 
-		'custom-header', 
+	add_theme_support(
+		'custom-header',
 		array(
 			'default-image'          => '',
 			'random-default'         => false,
@@ -96,7 +96,7 @@ function hybrid_base_custom_header_admin_preview() { ?>
 <?php }
 
 /**
- * Callback function for outputting the custom header CSS to `admin_head` on "Appearance > Custom Header".  See 
+ * Callback function for outputting the custom header CSS to `admin_head` on "Appearance > Custom Header".  See
  * the `css/admin-custom-header.css` file for all the style rules specific to this screen.
  *
  * @since  1.0.0

@@ -16,7 +16,7 @@ add_action( 'wp_enqueue_scripts', 'hybrid_base_enqueue_scripts', 5 );
 add_action( 'wp_enqueue_scripts', 'hybrid_base_enqueue_styles', 5 );
 
 /**
- * Registers custom image sizes for the theme. 
+ * Registers custom image sizes for the theme.
  *
  * @since  1.0.0
  * @access public
