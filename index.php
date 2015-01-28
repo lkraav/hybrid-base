@@ -10,6 +10,10 @@
 
     <?php if ( have_posts() ) : // Checks if any posts were found. ?>
 
+        <!-- hbd_before_loop -->
+        <?php hybrid_do_atomic( 'hbd_before_loop' ); ?>
+        <!-- end hbd_before_loop -->
+
         <?php while ( have_posts() ) : // Begins the loop through found posts. ?>
 
             <?php the_post(); // Loads the post data. ?>
@@ -23,6 +27,10 @@
             <?php endif; // End check for single post. ?>
 
         <?php endwhile; // End found posts loop. ?>
+
+        <!-- hbd_after_loop -->
+        <?php hybrid_do_atomic( 'hbd_after_loop' ); ?>
+        <!-- end hbd_after_loop -->
 
         <?php locate_template( array( 'misc/loop-nav.php' ), true ); // Loads the misc/loop-nav.php template. ?>
 
