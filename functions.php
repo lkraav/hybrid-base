@@ -54,44 +54,44 @@ add_action( 'after_setup_theme', 'hybrid_base_theme_setup', 5 );
  */
 function hybrid_base_theme_setup() {
 
-	/* Theme layouts. */
-	add_theme_support(
-		'theme-layouts',
-		array(
-			'1c'        => __( '1 Column',                     'hybrid-base' ),
-			'2c-l'      => __( '2 Columns: Content / Sidebar', 'hybrid-base' ),
-			'2c-r'      => __( '2 Columns: Sidebar / Content', 'hybrid-base' )
-		),
-		array( 'default' => is_rtl() ? '2c-r' :'2c-l' )
-	);
+    /* Theme layouts. */
+    add_theme_support(
+        'theme-layouts',
+        array(
+            '1c'        => __( '1 Column',                     'hybrid-base' ),
+            '2c-l'      => __( '2 Columns: Content / Sidebar', 'hybrid-base' ),
+            '2c-r'      => __( '2 Columns: Sidebar / Content', 'hybrid-base' )
+        ),
+        array( 'default' => is_rtl() ? '2c-r' :'2c-l' )
+    );
 
-	/* Enable custom template hierarchy. */
-	add_theme_support( 'hybrid-core-template-hierarchy' );
+    /* Enable custom template hierarchy. */
+    add_theme_support( 'hybrid-core-template-hierarchy' );
 
-	/* The best thumbnail/image script ever. */
-	add_theme_support( 'get-the-image' );
+    /* The best thumbnail/image script ever. */
+    add_theme_support( 'get-the-image' );
 
-	/* Breadcrumbs. Yay! */
-	add_theme_support( 'breadcrumb-trail' );
+    /* Breadcrumbs. Yay! */
+    add_theme_support( 'breadcrumb-trail' );
 
-	/* Pagination. */
-	add_theme_support( 'loop-pagination' );
+    /* Pagination. */
+    add_theme_support( 'loop-pagination' );
 
-	/* Nicer [gallery] shortcode implementation. */
-	add_theme_support( 'cleaner-gallery' );
+    /* Nicer [gallery] shortcode implementation. */
+    add_theme_support( 'cleaner-gallery' );
 
-	/* Better captions for themes to style. */
-	add_theme_support( 'cleaner-caption' );
+    /* Better captions for themes to style. */
+    add_theme_support( 'cleaner-caption' );
 
-	/* Automatically add feed links to <head>. */
-	add_theme_support( 'automatic-feed-links' );
+    /* Automatically add feed links to <head>. */
+    add_theme_support( 'automatic-feed-links' );
 
-	/* Post formats. */
-	add_theme_support(
-		'post-formats',
-		array( 'aside', 'audio', 'chat', 'image', 'gallery', 'link', 'quote', 'status', 'video' )
-	);
+    /* Post formats. */
+    add_theme_support(
+        'post-formats',
+        array( 'aside', 'audio', 'chat', 'image', 'gallery', 'link', 'quote', 'status', 'video' )
+    );
 
-	/* Handle content width for embeds and images. */
-	hybrid_set_content_width( 1280 );
+    /* Handle content width for embeds and images. */
+    hybrid_set_content_width( 1280 );
 }
