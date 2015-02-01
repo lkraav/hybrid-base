@@ -96,6 +96,7 @@ function hybrid_base_theme_setup() {
     hybrid_set_content_width( 1280 );
 
     /* Dynamic child theme setup. */
+    add_filter( 'body_class', 'hbd_body_class' );
 
     /* Dynamic parent theme re-implementation. */
     if ( is_child_theme() ) return;
@@ -107,6 +108,24 @@ function hybrid_base_theme_setup() {
     add_action( 'hbd_after_main', 'hbd_after_main' );
     add_action( 'hbd_before_footer', 'hbd_before_footer' );
     add_action( 'hbd_footer', 'hbd_footer' );
+}
+
+/**
+ * Slug-based body class for singular page custom styling. Layout is initially "default".
+ * Must explicitly set the post's layout in admin.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function hbd_body_class( $classes ) {
+    global $post;
+
+    if ( is_singular( get_post_type() ) && isset( $post->ID ) ) {
+        $classes[] = sprintf( 'layout-%s-%s', get_post_layout( $post->ID ), $post->post_name );
+    }
+
+    return $classes;
 }
 
 /**
