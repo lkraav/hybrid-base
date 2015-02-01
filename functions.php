@@ -98,9 +98,13 @@ function hybrid_base_theme_setup() {
     /* Dynamic child theme setup. */
     add_filter( 'body_class', 'hbd_body_class' );
 
-    /* Dynamic parent theme re-implementation. */
-    if ( is_child_theme() ) return;
+    if ( is_child_theme() ) {
+        remove_action( 'wp_enqueue_scripts', 'hybrid_base_enqueue_styles', 5 );
 
+        return;
+    }
+
+    /* Dynamic parent theme re-implementation. */
     add_action( 'hbd_before_body', 'hbd_before_body' );
     add_action( 'hbd_header', 'hbd_header' );
     add_action( 'hbd_after_header', 'hbd_after_header' );
