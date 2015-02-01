@@ -19,9 +19,13 @@
 
         <header <?php hybrid_attr( 'header' ); ?>>
 
+            <div <?php hybrid_attr( 'wrap', 'header' ); ?>>
+
             <!-- hbd_header -->
             <?php hybrid_do_atomic( 'hbd_header' ); ?>
             <!-- end hbd_header -->
+
+            </div><!-- .wrap_header -->
 
         </header><!-- #header -->
 
@@ -30,6 +34,8 @@
         <!-- end hbd_after_header -->
 
         <div id="main" class="main">
+
+            <div <?php hybrid_attr( 'wrap', 'main' ); ?>>
 
             <!-- hbd_before_main -->
             <?php hybrid_do_atomic( 'hbd_before_main' ); ?>
