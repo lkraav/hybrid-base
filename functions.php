@@ -94,4 +94,97 @@ function hybrid_base_theme_setup() {
 
     /* Handle content width for embeds and images. */
     hybrid_set_content_width( 1280 );
+
+    /* Dynamic child theme setup. */
+
+    /* Dynamic parent theme re-implementation. */
+    if ( is_child_theme() ) return;
+
+    add_action( 'hbd_before_body', 'hbd_before_body' );
+    add_action( 'hbd_header', 'hbd_header' );
+    add_action( 'hbd_after_header', 'hbd_after_header' );
+    add_action( 'hbd_before_main', 'hbd_before_main' );
+    add_action( 'hbd_after_main', 'hbd_after_main' );
+    add_action( 'hbd_before_footer', 'hbd_before_footer' );
+    add_action( 'hbd_footer', 'hbd_footer' );
+}
+
+/**
+ * Skip link, primary menu
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function hbd_before_body() {
+    get_template_part( 'before-body', 'skip-link' );
+    hybrid_get_menu( 'primary' ); // Loads the menu/primary.php template.
+}
+
+/**
+ * Branding, site title
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function hbd_header() {
+    hybrid_get_header( 'hbd' );
+}
+
+/**
+ * Secondary menu, header image
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function hbd_after_header() {
+    hybrid_get_menu( 'secondary' ); // Loads the menu/secondary.php template.
+    hybrid_get_header( 'hbd-after' );
+}
+
+/**
+ * Breadcrumbs
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function hbd_before_main() {
+    hybrid_get_menu( 'breadcrumbs' ); // Loads the menu/breadcrumbs.php template.
+}
+
+/**
+ * Primary sidebar
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function hbd_after_main() {
+    hybrid_get_sidebar( 'primary' ); // Loads the sidebar/primary.php template.
+}
+
+/**
+ * Subsidiary sidebar, subsidiary menu
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function hbd_before_footer() {
+    hybrid_get_sidebar( 'subsidiary' ); // Loads the sidebar/subsidiary.php template.
+    hybrid_get_menu( 'subsidiary' ); // Loads the menu/subsidiary.php template.
+}
+
+/**
+ * Credits
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function hbd_footer() {
+    hybrid_get_footer( 'hbd' );
 }
