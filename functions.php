@@ -79,6 +79,7 @@ function hybrid_base_theme_setup() {
     hybrid_set_content_width( 1280 );
 
     /* Dynamic child theme setup. */
+    add_filter( 'body_class', 'hbd_body_class' );
 
     /* Add wrap IDs. */
     add_filter( 'hybrid_attr_wrap', 'hbd_attr_wrap', 5, 2 );
@@ -112,6 +113,24 @@ function hbd_attr_wrap( $attr, $context ) {
     $attr['class'] = sprintf( '%1$s %2$s', $attr['id'], $slug );
 
     return $attr;
+}
+
+/**
+ * Slug-based body class for singular page custom styling. Layout is initially "default".
+ * Must explicitly set the post's layout in admin.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function hbd_body_class( $classes ) {
+    global $post;
+
+    if ( is_singular( get_post_type() ) && isset( $post->post_name ) ) {
+        $classes[] = sprintf( 'slug-%s', $post->post_name );
+    }
+
+    return $classes;
 }
 
 /**
