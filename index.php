@@ -2,6 +2,8 @@
 
 <main <?php hybrid_attr( 'content' ); ?>>
 
+    <div <?php hybrid_attr( 'wrap', 'content' ); ?>>
+
     <?php if ( ! is_front_page() && hybrid_is_plural() ) : // If viewing a multi-post page ?>
 
         <?php locate_template( array( 'misc/archive-header.php' ), true ); // Loads the misc/archive-header.php template. ?>
@@ -39,6 +41,8 @@
         <?php locate_template( array( 'content/error.php' ), true ); // Loads the content/error.php template. ?>
 
     <?php endif; // End check for posts. ?>
+
+    </div><!-- #wrap-content -->
 
 </main><!-- #content -->
 

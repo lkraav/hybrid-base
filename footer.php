@@ -2,6 +2,8 @@
             <?php do_action( 'hbd_after_main' ); ?>
             <!-- end hbd_after_main -->
 
+            </div><!-- #wrap-main -->
+
         </div><!-- #main -->
 
         <!-- hbd_before_footer -->
@@ -10,9 +12,13 @@
 
         <footer <?php hybrid_attr( 'footer' ); ?>>
 
+            <div <?php hybrid_attr( 'wrap', 'footer' ); ?>>
+
             <!-- hbd_footer -->
             <?php do_action( 'hbd_footer' ); ?>
             <!-- end hbd_footer -->
+
+            </div><!-- #wrap-footer -->
 
         </footer><!-- #footer -->
 

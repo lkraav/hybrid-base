@@ -80,6 +80,9 @@ function hybrid_base_theme_setup() {
 
     /* Dynamic child theme setup. */
 
+    /* Add wrap IDs. */
+    add_filter( 'hybrid_attr_wrap', 'hbd_attr_wrap', 5, 2 );
+
     /* Dynamic parent theme re-implementation. */
     if ( is_child_theme() ) {
         return;
@@ -92,6 +95,23 @@ function hybrid_base_theme_setup() {
     add_action( 'hbd_after_main', 'hbd_after_main' );
     add_action( 'hbd_before_footer', 'hbd_before_footer' );
     add_action( 'hbd_footer', 'hbd_footer' );
+}
+
+/**
+ * Provides explicit IDs to all wrap elements.
+ * Avoids element anonymity when disabling wrap class attribute.
+ *
+ * @since  1.0.0
+ * @access public
+ * @return void
+ */
+function hbd_attr_wrap( $attr, $context ) {
+    $slug = 'wrap';
+
+    $attr['id'] = sprintf( '%1$s-%2$s', $slug, $context );
+    $attr['class'] = sprintf( '%1$s %2$s', $attr['id'], $slug );
+
+    return $attr;
 }
 
 /**
