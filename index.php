@@ -10,7 +10,7 @@
 
     <?php endif; // End check for multi-post page. ?>
 
-    <?php if ( have_posts() ) : // Checks if any posts were found. ?>
+    <?php if ( have_posts() && ! is_404() ) : // Checks if any posts were found. ?>
 
         <!-- hbd_before_loop -->
         <?php do_action( 'hbd_before_loop' ); ?>
