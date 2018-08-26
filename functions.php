@@ -41,6 +41,9 @@ require_once( $hybrid_base_dir . 'inc/theme.php'             );
 // Do theme setup on the 'after_setup_theme' hook.
 add_action( 'after_setup_theme', 'hybrid_base_theme_setup', 5 );
 
+/* Do WooCommerce setup on a later 'after_setup_theme' hook. */
+add_action( 'after_setup_theme', 'hbd_woocommerce_setup', 15 );
+
 /**
  * Theme setup function.  This function adds support for theme features and defines the default theme
  * actions and filters.
@@ -211,4 +214,23 @@ function hbd_before_footer() {
  */
 function hbd_footer() {
     hybrid_get_footer( 'hbd' );
+}
+
+/**
+ * WooCommerce setup function. This function adds support for WooCommerce templates and defines the default
+ * Hybrid Base actions and filters. It expects add_theme_support( 'woocommerce' ) called some time earlier.
+ *
+ * @since  2.0.0
+ * @since-woocommerce 2.5.5
+ * @access public
+ * @return void
+ */
+function hbd_woocommerce_setup() {
+    global $hybrid_base_dir;
+
+    if ( ! current_theme_supports( 'woocommerce' ) ) {
+        return;
+    }
+
+    require_once( $hybrid_base_dir . 'inc/woocommerce.php' );
 }
